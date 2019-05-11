@@ -1,0 +1,17 @@
+{
+  "name": "termodaq_link",
+  "version": "1.0.0",
+  "description": "termoDaQ Link",
+  "main": "link.js",
+  "bin": "link.js",
+  "scripts": {
+    "termodaq": "node ."
+  },
+  "author": "Jesus Rodriguez",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "inquirer": "^6.3.1",
+    "serialport": "^7.1.5"
+  }
+}

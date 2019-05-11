@@ -1,0 +1,5 @@
+.vscode
+node_modules
+termodaq_link-linux
+termodaq_link-macos
+termodaq_link-win.exe
