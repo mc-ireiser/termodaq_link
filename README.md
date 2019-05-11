@@ -1,5 +1,27 @@
 # termoDaQ Link
 
+Aplicación para establecer conexión Serial con la tarjeta termoDaQ
+
+## Instalar y ejecutar desde el código fuente
+
+Clone o Descarge el **Repositorio**.
+
+Si Clona:
+> Entre en la carpeta termodaq_link-master.
+
+Si Descarga:
+> Descomprima el archivo descargado, luego entre en la carpeta termodaq_link-master.
+
+En el terminal ejecute los siguientes comandos:
+
+```bash
+# Para instalar
+npm install
+
+# Para ejecutar la aplicación
+npm run termodaq
+```
+
 ## Empaquetar la aplicación
 
 Para empaquetar el proyecto en un archivo ejecutable instale la herramienta pkg utilizando el siguiente comando:
