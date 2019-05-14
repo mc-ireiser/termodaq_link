@@ -116,7 +116,7 @@ async function init() {
       let port = null
       let rawData = ""
       let studio = []
-      const host = 'http://localhost:3000'
+      const host = 'http://api.termodaq.com.ve'
 
       if (answers.alias) {
         alias = '-' + answers.alias.replace(/ /g, "")
