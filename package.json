@@ -2,8 +2,8 @@
   "name": "termodaq_link",
   "version": "1.0.0",
   "description": "termoDaQ Link",
-  "main": "link.js",
-  "bin": "link.js",
+  "main": "app.js",
+  "bin": "app.js",
   "scripts": {
     "termodaq": "node ."
   },
