@@ -1,7 +1,13 @@
+'use strict'
+
 const fs = require('fs')
 const chalk = require('chalk')
 
 module.exports = {
+
+  header: function () {
+    console.log(chalk.blue.bold('\n\rtermoDaQ V1.0\n\r'))
+  },
 
   info: function (from, data) {
     console.log(chalk.blue.bold(from), data)
