@@ -1,6 +1,7 @@
 const v = require('./var.json')
 const axios = require('axios')
 const logData = require('./log')
+const auth = require('./auth')
 
 module.exports = {
 
@@ -12,11 +13,11 @@ module.exports = {
     })
     .then(function (response) {
       logData.info('~$termodaq-api:', 'DATAFILE SUBIDO AL SERVIDOR')
-      logData.exitCli()
+      auth.logout(token)
     })
     .catch(function (e) {
       logData.error('~$termodaq-api:', 'ERROR SUBIENDO ESTUDIO => ' + e)
-      logData.exitCli()
+      auth.logout(token)
     })
   }
 
