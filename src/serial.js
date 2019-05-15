@@ -1,3 +1,5 @@
+'use strict'
+
 const serialport = require("serialport")
 const Readline = require('@serialport/parser-readline')
 const CSV = require('comma-separated-values')
@@ -5,7 +7,6 @@ const logData = require('./log')
 const serverReq = require('./req')
 
 let rawData = ""
-let studio = []
 
 let isWin = process.platform === "win32";
 let isLin = process.platform === "linux";
@@ -45,6 +46,7 @@ module.exports = {
     const parser = port.pipe(new Readline({ delimiter: '\r\n' }))
     
     parser.on('data', async function (data) {
+      
       logData.info('~$termodaq:', data)
       // console.log('~$termodaq:', data)
 

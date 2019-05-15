@@ -2,7 +2,6 @@
 
 'use strict'
 
-const chalk = require('chalk')
 const Isemail = require('isemail')
 const inquirer = require('inquirer')
 const auth = require('./src/auth')
@@ -10,10 +9,7 @@ const logData = require('./src/log')
 const serial = require('./src/serial')
 let portList = serial.listPorts
 
-let serialPort
-let userData = {}
-
-async function init() {
+function init() {
   inquirer
     .prompt([
       {
@@ -93,14 +89,15 @@ async function init() {
     ])
     .then(answers => {
 
+      let userData = {}
+
       async function main () {
         if (answers.task === '4') {
           return
         }
 
-        console.log(chalk.blue.bold('\n\rtermoDaQ V1.0\n\r'))
+        logData.header()
 
-        
         let alias
         if (answers.alias) {
           alias = '-' + answers.alias.replace(/ /g, "")
@@ -112,18 +109,11 @@ async function init() {
   
         if (answers.cloud === 'Si') {
           userData = await auth.login(answers.email, answers.password)
-          if (userData) {
-            // Abrir puerto serial
-            let portPath = answers.port.split(" ", 1)
-            serialPort = await serial.openPort(portPath[0])
-            serial.portParse(serialPort, answers.task, answers.cloud, fileName, userData)
-          }
-        } else {
-          // Abrir puerto serial
-          let portPath = answers.port.split(" ", 1)
-          serialPort = await serial.openPort(portPath[0])
-          serial.portParse(serialPort, answers.task, answers.cloud, fileName, null)
-        }
+        } 
+        
+        let portPath = answers.port.split(" ", 1)
+        const serialPort = await serial.openPort(portPath[0])
+        serial.portParse(serialPort, answers.task, answers.cloud, fileName, userData)
       }
 
       main()
