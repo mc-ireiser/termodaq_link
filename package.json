@@ -10,7 +10,7 @@
   "author": "Jesus Rodriguez",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "chalk": "^2.4.2",
     "comma-separated-values": "^3.6.4",
     "inquirer": "^6.3.1",
