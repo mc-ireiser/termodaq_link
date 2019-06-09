@@ -1,4 +1,6 @@
 # termoDaQ Link
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmc-ireiser%2Ftermodaq_link.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmc-ireiser%2Ftermodaq_link?ref=badge_shield)
+
 
 Aplicación para establecer conexión Serial con la tarjeta termoDaQ
 
@@ -44,3 +46,6 @@ Una vez instalada la herramienta, en la carpeta raíz del proyecto ejecute el co
 Nota: `Node.js V 10.4.1` es requerido para realizar el proceso anterior.
 
 Como resultado se generan ejecutables: `linux-x64`, `win-x64` y `macos-x64`
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmc-ireiser%2Ftermodaq_link.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmc-ireiser%2Ftermodaq_link?ref=badge_large)
