@@ -10,7 +10,7 @@ module.exports = {
 
   login: async function(email, password) {
     try {
-      let url = `${v.host}/api/usuarios/login`
+      let url = `${v.host}/api/usuario/login`
       const response = await axios.post(url, {
         email: email,
         password: password
@@ -29,7 +29,7 @@ module.exports = {
 
   logout: async function(token) {
     try {
-      let url = `${v.host}/api/usuarios/logout?access_token=${token}`
+      let url = `${v.host}/api/usuario/logout?access_token=${token}`
       await axios.post(url)
       logData.info('~$termodaq-api:', 'LOGOUT OK')
       logData.exitCli()

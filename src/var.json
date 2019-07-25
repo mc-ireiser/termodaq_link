@@ -1,4 +1,4 @@
 {
   "localhost": "http://localhost:3000",
-  "host": "http://api.termodaq.com.ve"
+  "host": "https://termodaq-api.herokuapp.com"
 }
