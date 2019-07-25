@@ -85,6 +85,28 @@ function init() {
         when: function (answers) {
           return answers.task === '2'
         }
+      },
+      {
+        type: 'input',
+        name: 'titulo',
+        message: 'DataFile - Titulo: ',
+        when: function (answers) {
+          return answers.task === '2'
+        },
+        validate: function (input) {
+          return input.length > 0
+        }
+      },
+      {
+        type: 'input',
+        name: 'lugar',
+        message: 'DataFile - Lugar: ',
+        when: function (answers) {
+          return answers.task === '2'
+        },
+        validate: function (input) {
+          return input.length > 0
+        }
       }
     ])
     .then(answers => {
@@ -113,7 +135,7 @@ function init() {
         
         let portPath = answers.port.split(" ", 1)
         const serialPort = await serial.openPort(portPath[0])
-        serial.portParse(serialPort, answers.task, answers.cloud, fileName, userData)
+        serial.portParse(serialPort, answers.task, answers.cloud, fileName, userData, answers.titulo, answers.lugar)
       }
 
       main()
