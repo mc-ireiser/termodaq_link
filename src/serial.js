@@ -42,7 +42,7 @@ module.exports = {
     })
   },
 
-  portParse: async function (port, task, cloud, fileName, userData) {
+  portParse: async function (port, task, cloud, fileName, userData, titulo, lugar) {
     const parser = port.pipe(new Readline({ delimiter: '\r\n' }))
     
     parser.on('data', async function (data) {
@@ -75,7 +75,7 @@ module.exports = {
             let studio = await new CSV(rawData, {
               header: ['latitude', 'longitude', 'date', 'time', 'tempInternal', 'tempWater', 'tempAir', 'pressure', 'uv']
             }).parse()
-            serverReq.upload(userData.id, userData.token, studio)
+            serverReq.upload(userData.id, userData.token, studio, titulo, lugar)
           } catch(e) {
             logData.error('~$termodaq-link:', 'ERROR EN PARSE => ' + e)
           }
