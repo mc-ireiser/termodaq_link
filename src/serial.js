@@ -1,10 +1,10 @@
 "use strict";
 
-const SerialPort = require("serialport")
-const Readline = require('@serialport/parser-readline')
-const CSV = require('comma-separated-values')
-const logData = require('./log')
-const serverReq = require('./req')
+const SerialPort = require("serialport");
+const Readline = require("@serialport/parser-readline");
+const CSV = require("comma-separated-values");
+const logData = require("./log");
+const serverReq = require("./req");
 
 let rawData = "";
 
@@ -13,18 +13,17 @@ let isLin = process.platform === "linux";
 let isMac = process.platform === "darwin";
 
 module.exports = {
-
-  listPorts: async function () {
-    let list = []
-    await SerialPort.list(function (err, ports) {
-      ports.forEach(function (port) {
-        list.push(`${port.comName} - ${port.manufacturer}`)
-      })
-    })
-    return list
+  listPorts: async function() {
+    let list = [];
+    await SerialPort.list(function(err, ports) {
+      ports.forEach(function(port) {
+        list.push(`${port.comName} - ${port.manufacturer}`);
+      });
+    });
+    return list;
   },
 
-  openPort: async function (portPath) {
+  openPort: async function(portPath) {
     let openPort = await new SerialPort(portPath, {
       baudRate: 115200,
       dataBits: 8,
