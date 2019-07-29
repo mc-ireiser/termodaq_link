@@ -83,7 +83,7 @@ function init() {
         name: 'alias',
         message: 'DataFile - Alias: ',
         when: function (answers) {
-          return answers.task === '2'
+          return answers.cloud === 'No'
         }
       },
       {
@@ -91,7 +91,7 @@ function init() {
         name: 'titulo',
         message: 'DataFile - Titulo: ',
         when: function (answers) {
-          return answers.task === '2'
+          return answers.cloud === 'Si'
         },
         validate: function (input) {
           return input.length > 0
@@ -102,7 +102,7 @@ function init() {
         name: 'lugar',
         message: 'DataFile - Lugar: ',
         when: function (answers) {
-          return answers.task === '2'
+          return answers.cloud === 'Si'
         },
         validate: function (input) {
           return input.length > 0
@@ -113,7 +113,7 @@ function init() {
         name: 'descripcion',
         message: 'DataFile - Descripcion: ',
         when: function (answers) {
-          return answers.task === '2'
+          return answers.cloud === 'Si'
         },
         validate: function (input) {
           return input.length > 0
