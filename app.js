@@ -79,41 +79,41 @@ function init() {
         }
       },
       {
-        type: 'input',
-        name: 'alias',
-        message: 'DataFile - Alias: ',
-        when: function (answers) {
-          return answers.cloud === 'No'
+        type: "input",
+        name: "alias",
+        message: "DataFile - Alias: ",
+        when: function(answers) {
+          return answers.cloud === "No";
         }
       },
       {
-        type: 'input',
-        name: 'titulo',
-        message: 'DataFile - Titulo: ',
-        when: function (answers) {
-          return answers.cloud === 'Si'
+        type: "input",
+        name: "titulo",
+        message: "DataFile - Titulo: ",
+        when: function(answers) {
+          return answers.cloud === "Si";
         },
         validate: function(input) {
           return input.length > 0;
         }
       },
       {
-        type: 'input',
-        name: 'lugar',
-        message: 'DataFile - Lugar: ',
-        when: function (answers) {
-          return answers.cloud === 'Si'
+        type: "input",
+        name: "lugar",
+        message: "DataFile - Lugar: ",
+        when: function(answers) {
+          return answers.cloud === "Si";
         },
         validate: function(input) {
           return input.length > 0;
         }
       },
       {
-        type: 'input',
-        name: 'descripcion',
-        message: 'DataFile - Descripcion: ',
-        when: function (answers) {
-          return answers.cloud === 'Si'
+        type: "input",
+        name: "descripcion",
+        message: "DataFile - Descripcion: ",
+        when: function(answers) {
+          return answers.cloud === "Si";
         },
         validate: function(input) {
           return input.length > 0;
