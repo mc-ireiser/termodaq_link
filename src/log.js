@@ -1,32 +1,33 @@
-'use strict'
+"use strict";
 
-const fs = require('fs')
-const chalk = require('chalk')
+const fs = require("fs");
+const chalk = require("chalk");
 
 module.exports = {
-
-  header: function () {
-    console.log(chalk.blue.bold('\n\rtermoDaQ V1.0\n\r'))
+  header: function() {
+    console.log(chalk.blue.bold("\n\rtermoDaQ V1.0\n\r"));
   },
 
-  info: function (from, data) {
-    console.log(chalk.blue.bold(from), data)
+  info: function(from, data) {
+    console.log(chalk.blue.bold(from), data);
   },
 
-  error: function (from, data) {
-    console.log(chalk.red.bold(from), data)
+  error: function(from, data) {
+    console.log(chalk.red.bold(from), data);
   },
 
-  exitCli: function () {
-    console.log(chalk.green('\n\rLa tarea ha sido completada de manera exitosa...\n\r'))
-    console.log(chalk.bgGreen.bold('Presione Ctrl+C Para salir'))
+  exitCli: function() {
+    console.log(
+      chalk.green("\n\rLa tarea ha sido completada de manera exitosa...\n\r")
+    );
+    console.log(chalk.bgGreen.bold("Presione Ctrl+C Para salir"));
   },
 
-  writeDataFile: async function (fileName, data) {
-    await fs.appendFile(fileName, data + '\r\n', function (err) {
+  writeDataFile: async function(fileName, data) {
+    await fs.appendFile(fileName, data + "\r\n", function(err) {
       if (err) {
-        return console.log(chalk.red.bold('Error almacenando archivo: '), err)
+        return console.log(chalk.red.bold("Error almacenando archivo: "), err);
       }
-    })
+    });
   }
-}
+};
