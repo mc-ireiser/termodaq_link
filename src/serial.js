@@ -1,6 +1,6 @@
 'use strict'
 
-const serialport = require("serialport")
+const SerialPort = require("serialport")
 const Readline = require('@serialport/parser-readline')
 const CSV = require('comma-separated-values')
 const logData = require('./log')
@@ -16,7 +16,7 @@ module.exports = {
 
   listPorts: async function () {
     let list = []
-    await serialport.list(function (err, ports) {
+    await SerialPort.list(function (err, ports) {
       ports.forEach(function (port) {
         list.push(`${port.comName} - ${port.manufacturer}`)
       })
@@ -25,7 +25,7 @@ module.exports = {
   },
 
   openPort: async function (portPath) {
-    let openPort = await new serialport(portPath, {
+    let openPort = await new SerialPort(portPath, {
       baudRate: 115200,
       dataBits: 8,
       stopBits: 1,
