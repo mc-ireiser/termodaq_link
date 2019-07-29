@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 const SerialPort = require("serialport")
 const Readline = require('@serialport/parser-readline')
@@ -6,7 +6,7 @@ const CSV = require('comma-separated-values')
 const logData = require('./log')
 const serverReq = require('./req')
 
-let rawData = ""
+let rawData = "";
 
 let isWin = process.platform === "win32";
 let isLin = process.platform === "linux";
@@ -29,60 +29,91 @@ module.exports = {
       baudRate: 115200,
       dataBits: 8,
       stopBits: 1,
-      parity: 'none'
-    })
-    return openPort
+      parity: "none"
+    });
+    return openPort;
   },
 
-  closePort: function (port) {
-    port.close(function (e) {
+  closePort: function(port) {
+    port.close(function(e) {
       if (e) {
-        logData.error('~$termodaq-link:', 'ERROR CERRANDO PUERTO SERIAL => ' + e.message)
+        logData.error(
+          "~$termodaq-link:",
+          "ERROR CERRANDO PUERTO SERIAL => " + e.message
+        );
       }
-    })
+    });
   },
 
-  portParse: async function (port, task, cloud, fileName, userData, titulo, lugar, descripcion) {
-    const parser = port.pipe(new Readline({ delimiter: '\r\n' }))
-    
-    parser.on('data', async function (data) {
-      
-      logData.info('~$termodaq:', data)
+  portParse: async function(
+    port,
+    task,
+    cloud,
+    fileName,
+    userData,
+    titulo,
+    lugar,
+    descripcion
+  ) {
+    const parser = port.pipe(new Readline({ delimiter: "\r\n" }));
+
+    parser.on("data", async function(data) {
+      logData.info("~$termodaq:", data);
       // console.log('~$termodaq:', data)
 
-      if (data === 'CS:OK') {
-        port.write(task, function (e) {
+      if (data === "CS:OK") {
+        port.write(task, function(e) {
           if (e) {
-            logData.error('~$termodaq-link:', 'ERROR ESCRIBIENDO EN PUERTO SERIAL => ' + e.message)
+            logData.error(
+              "~$termodaq-link:",
+              "ERROR ESCRIBIENDO EN PUERTO SERIAL => " + e.message
+            );
           }
-        })
+        });
       }
 
-      if (task === '2' && (data !== 'CS:OK' && data !== 'CS:END')) {
-        logData.writeDataFile(fileName, data)
+      if (task === "2" && (data !== "CS:OK" && data !== "CS:END")) {
+        logData.writeDataFile(fileName, data);
 
-        if (cloud === 'Si') {
+        if (cloud === "Si") {
           if (rawData === "") {
-            rawData = data
+            rawData = data;
           }
-          rawData = rawData + '\n\r' + data
+          rawData = rawData + "\n\r" + data;
         }
       }
 
-      if (data === 'CS:END') {
-        if (cloud === 'Si') {
+      if (data === "CS:END") {
+        if (cloud === "Si") {
           try {
             let studio = await new CSV(rawData, {
-              header: ['latitude', 'longitude', 'date', 'time', 'tempInternal', 'tempWater', 'tempAir', 'pressure', 'uv']
-            }).parse()
-            serverReq.upload(userData.id, userData.token, studio, titulo, lugar, descripcion)
-          } catch(e) {
-            logData.error('~$termodaq-link:', 'ERROR EN PARSE => ' + e)
+              header: [
+                "latitude",
+                "longitude",
+                "date",
+                "time",
+                "tempInternal",
+                "tempWater",
+                "tempAir",
+                "pressure",
+                "uv"
+              ]
+            }).parse();
+            serverReq.upload(
+              userData.id,
+              userData.token,
+              studio,
+              titulo,
+              lugar,
+              descripcion
+            );
+          } catch (e) {
+            logData.error("~$termodaq-link:", "ERROR EN PARSE => " + e);
           }
         } else {
-          logData.exitCli()
+          logData.exitCli();
         }
       }
-    })
+    });
   }
-}
+};
