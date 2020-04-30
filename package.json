@@ -5,7 +5,9 @@
   "main": "app.js",
   "bin": "app.js",
   "scripts": {
-    "termodaq": "node ."
+    "termodaq": "node .",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "Jesus Rodriguez",
   "license": "MIT",
@@ -15,6 +17,8 @@
     "comma-separated-values": "^3.6.4",
     "inquirer": "^6.3.1",
     "isemail": "^3.2.0",
-    "serialport": "^7.1.5"
-  }
+    "serialport": "^7.1.5",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
